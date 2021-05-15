@@ -4,6 +4,7 @@ version = "0.4.6"
 
 [deps]
 Crayons = "a8cc5b0e-0ffa-5ad4-8c14-923d3ee1735f"
+FileIO = "5789e2e9-d7fb-5bc7-8068-2c6fae9b9549"
 ImageCore = "a09fc81d-aa75-5fe9-8630-4744c3626534"
 ImageTransformations = "02fcd773-0e25-5acc-982a-7f6622650795"
 
