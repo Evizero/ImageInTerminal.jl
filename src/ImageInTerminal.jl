@@ -3,6 +3,7 @@ module ImageInTerminal
 using Crayons
 using ImageCore
 using ImageTransformations
+using FileIO
 
 export
 
@@ -14,6 +15,7 @@ export
 include("colorant2ansi.jl")
 include("encodeimg.jl")
 include("imshow.jl")
+include("compat.jl")
 
 # -------------------------------------------------------------------
 # overload default show in the REPL for colorant (arrays)
@@ -83,6 +85,8 @@ function Base.show(io::IO, mime::MIME"text/plain", color::Colorant)
     end
 end
 
+include("display.jl")
+
 function __init__()
     # use 24bit if the terminal supports it
     lowercase(get(ENV, "COLORTERM", "")) in ("24bit", "truecolor") && use_24bit()
@@ -93,6 +97,8 @@ function __init__()
         @warn "ImageInTerminal is not supported for Windows platform: Julia at least v1.6.0 is required."
         disable_encoding()
     end
+
+    pushdisplay(TerminalGraphicDisplay(stdout))
 end
 
 end # module
